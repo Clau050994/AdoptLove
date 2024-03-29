@@ -3,7 +3,8 @@
 
 Submitted by: **Claudia Varona **
 
-This web app: "AdoptLove" is a user-friendly app that revolutionizes the pet adoption experience by offering a dynamic, real-time selection of pets from Petfinder. It's designed to help users effortlessly find their new best friends with advanced search capabilities, multiple detailed filters, and a dashboard rich with data insights and summary statistics. With "AdoptLove," discovering and falling in love with your ideal pet companion is just a few taps away, backed by the power of comprehensive, live data.
+This web app: 
+The Recipe App is an engaging culinary platform that offers users a delightful way to discover random recipes. With a simple click, users can fetch an assortment of dishes from Spoonacular's extensive database. To assist in health-conscious dining, the app calculates and displays useful nutritional statistics such as the median health score of the fetched recipes, the highest Spoonacular score for quality assurance, and the price range per serving for budget-friendly meal planning. Additionally, users can leverage a search functionality to quickly find recipes based on titles, apply filters for health scores to suit their dietary preferences, and set a maximum price to ensure the recipes align with their budget. This app not only simplifies the search for new and exciting recipes but also makes mindful eating easier to manage and more accessible.
 
 Time spent: 8 hours spent in total
 
@@ -15,18 +16,15 @@ The following **required** functionality is completed:
 - [x] **Data uses the useEffect React hook and async/await syntax**
 - [X] **The app dashboard includes at least three summary statistics about the data such as**
   - [X] *The Median Health Score, the Price range, the highest Spoonacular Score*
-- [ ] **A search bar allows the user to search for an item in the fetched data**
-- [ ] **Multiple different filters (2+) allow the user to filter items in the database by specified categories**
+- [x] **A search bar allows the user to search for an item in the fetched data**
+- [x] **Multiple different filters (2+) allow the user to filter items in the database by specified categories**
 
 The following **optional** features are implemented:
 
-- [ ] Multiple filters can be applied simultaneously
-- [ ] Filters use different input types such as a text input, a selection, or a slider
+- [X] Multiple filters can be applied simultaneously
+- [X] Filters use different input types such as a text input, a selection, or a slider
 - [ ] The user can enter specific bounds for filter values
 
-The following **additional** features are implemented:
-
-* [ ] List anything else that you added to improve the site's functionality!
 
 ## Video Walkthrough
 
