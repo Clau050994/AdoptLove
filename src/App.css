@@ -1,0 +1,77 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+body {
+  font-family: 'Arial', sans-serif;
+  color: #fff;
+  background: #3f4c6b;
+  background-image: url('https://images.unsplash.com/photo-1554034483-04fda0d3507b?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2xlYXIlMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww'); 
+  background-size: cover;
+  background-repeat: no-repeat;
+  
+}
+
+
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  
+}
+.stats-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center; /* To align the cards vertically */
+  flex-wrap: wrap; /* Wrap the cards on smaller screens */
+  gap: 20px; /* Adds space between cards */
+  margin-bottom: 2rem; /* Add some space below the container */
+
+}
+
+.stat-card {
+  background: transparent;
+  padding: 1rem;
+  margin: 0.5rem; /* Spacing around each card */
+  border-radius: 8px; /* Rounded corners for the cards */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Card shadow for depth */
+  width: calc(33.333% - 40px); /* Width of each card, accounting for the gap */
+  min-width: 200px; /* Minimum width for smaller screens */
+  box-sizing: border-box; /* Include padding and border in the width */
+  border: 1px solid #ccc; /* Add a border to the cards */
+ 
+ 
+}
+
+.stat-card h2 {
+  margin-bottom: 0.5rem; /* Spacing between the title and the value */
+  color: #2a2f45; /* Color for the titles */
+  font-size: 1.2rem; /* Size of the title */
+}
+
+.stat-card p {
+  font-size: 1rem; /* Size of the paragraph */
+  font-weight: bold; /* Make the stat value bold */
+  color: #3f4c6b; /* Color for the paragraph text */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .stat-card {
+    width: calc(50% - 40px); /* Two cards per row on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-container {
+    flex-direction: column; /* Stack cards vertically on very small screens */
+  }
+
+  .stat-card {
+    width: 100%; /* Full width cards on very small screens */
+    margin: 0.5rem 0; /* Adjust margin for stacked layout */
+  }
+}

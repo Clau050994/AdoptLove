@@ -1,7 +1,8 @@
+# React + Vite
 
 # Web Development Project 5 - *# Recipe App*
 
-Submitted by: **Claudia Varona **
+Currently, two official plugins are available:
 
 This web app: 
 The Recipe App is an engaging culinary platform that offers users a delightful way to discover random recipes. With a simple click, users can fetch an assortment of dishes from Spoonacular's extensive database. To assist in health-conscious dining, the app calculates and displays useful nutritional statistics such as the median health score of the fetched recipes, the highest Spoonacular score for quality assurance, and the price range per serving for budget-friendly meal planning. Additionally, users can leverage a search functionality to quickly find recipes based on titles, apply filters for health scores to suit their dietary preferences, and set a maximum price to ensure the recipes align with their budget. This app not only simplifies the search for new and exciting recipes but also makes mindful eating easier to manage and more accessible.
