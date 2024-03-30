@@ -24,10 +24,10 @@ function RecipeApp() {
       const request = await axios.get(`${SERVER_URL}?apiKey=${API}&number=${number}`)
       console.log(request.data.recipes)
       setSearchResult(request.data.recipes);
+      setDisplayedRecipes(request.data.recipes);
      
 
       let sum = 0;
-
       for (let i = 0; i < request.data.recipes.length; i++) {
         sum += request.data.recipes[i].healthScore;
       }
@@ -42,28 +42,22 @@ function RecipeApp() {
           newMAx = request.data.recipes[i].spoonacularScore;
         }
       }
-  
       setHighestSpoonacularScore(newMAx);
-      
 
-  
-        let minPricePerServing = request.data.recipes[0].pricePerServing;
-        let maxPricePerServing = request.data.recipes[0].pricePerServing;
+      let minPricePerServing = request.data.recipes[0].pricePerServing;
+      let maxPricePerServing = request.data.recipes[0].pricePerServing;
 
-        for (let i = 1; i < request.data.recipes.length; i++) {
-          const pricePerServing = request.data.recipes[i].pricePerServing;
-          if (pricePerServing > maxPricePerServing) {
-            maxPricePerServing = pricePerServing;
-          }
-          if (pricePerServing < minPricePerServing) {
-            minPricePerServing = pricePerServing;
-          }
+      for (let i = 1; i < request.data.recipes.length; i++) {
+        const pricePerServing = request.data.recipes[i].pricePerServing;
+        if (pricePerServing > maxPricePerServing) {
+          maxPricePerServing = pricePerServing;
         }
-
-              console.log(minPricePerServing);
-              console.log(maxPricePerServing);
-              setMinpricePerServing(minPricePerServing);
-              setMaxPricePerServing(maxPricePerServing);
+        if (pricePerServing < minPricePerServing) {
+          minPricePerServing = pricePerServing;
+        }
+      }
+      setMinpricePerServing(minPricePerServing);
+      setMaxPricePerServing(maxPricePerServing);
             
     }catch(error){
       console.log(error)
@@ -71,18 +65,13 @@ function RecipeApp() {
    
 }
 
-const filteredRecipes = searchResult.filter(recipe => {
-  return recipe.title.toLowerCase().includes(searchQuery.toLowerCase()) &&
-    (!healthScoreFilter || recipe.healthScore >= parseFloat(healthScoreFilter)) &&
-    (!priceFilter || recipe.pricePerServing <= parseFloat(priceFilter));
-});
-
 const handleSearch = () => {
   const filtered = searchResult.filter(recipe => {
     return recipe.title.toLowerCase().includes(searchQuery.toLowerCase()) &&
       (!healthScoreFilter || recipe.healthScore >= parseFloat(healthScoreFilter)) &&
       (!priceFilter || recipe.pricePerServing <= parseFloat(priceFilter));
   });
+  console.log(filtered);
   setDisplayedRecipes(filtered);
 };
 
@@ -118,21 +107,21 @@ useEffect(() => {
           type="text"
           placeholder="Search recipes..."
           value={searchQuery}
-          style={{ backgroundColor: 'white', marginRight: '10px'}}
+          style={{ backgroundColor: 'white', color: 'black', marginRight: '10px'}}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
         <input
           type="number"
           placeholder="Minimum Health Score"
           value={healthScoreFilter}
-          style={{ backgroundColor: 'white', marginRight: '10px'}}
+          style={{ backgroundColor: 'white', color: 'black', marginRight: '10px'}}
           onChange={(e) => setHealthScoreFilter(e.target.value)}
         />
         <input
           type="number"
           placeholder="Maximum Price"
           value={priceFilter}
-          style={{ backgroundColor: 'white', marginRight: '10px'}}
+          style={{ backgroundColor: 'white', color: 'black', marginRight: '10px'}}
           onChange={(e) => setPriceFilter(e.target.value)}
         />
         <button onClick={handleSearch}>Search</button>
