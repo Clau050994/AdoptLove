@@ -23,7 +23,7 @@ The following **required** functionality is completed:
 
 Here's a walkthrough of implemented user stories:
 
-<img />
+<img src='https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmg4YnR2eWoyaGYybnBxaXppamZybDBsZXp5Y2s4MXVqOXhtdGdkZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Y69uFxOWkCg1HMjbYW/giphy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 
 GIF created with GIPHY 
