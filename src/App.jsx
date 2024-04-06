@@ -1,8 +1,25 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
-
-
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
+import { Bar } from 'react-chartjs-2';
+import { Link } from 'react-router-dom';
 
 function RecipeApp() {
   const SERVER_URL = 'https://api.spoonacular.com/recipes/random';
@@ -17,12 +34,26 @@ function RecipeApp() {
   const [healthScoreFilter, setHealthScoreFilter] = useState('');
   const [priceFilter, setPriceFilter] = useState('');
   const [displayedRecipes, setDisplayedRecipes] = useState([]);
-
+  const [chartData, setChartData] = useState({
+    labels: [],
+    datasets: [{ label: 'Health Score', data: [] }],
+  });
+  const chartOptions = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Health Score Distribution',
+      },
+    },
+  };
 
   const searchRecipy = async () => {
     try{
       const request = await axios.get(`${SERVER_URL}?apiKey=${API}&number=${number}`)
-      console.log(request.data.recipes)
       setSearchResult(request.data.recipes);
       setDisplayedRecipes(request.data.recipes);
      
@@ -71,21 +102,39 @@ const handleSearch = () => {
       (!healthScoreFilter || recipe.healthScore >= parseFloat(healthScoreFilter)) &&
       (!priceFilter || recipe.pricePerServing <= parseFloat(priceFilter));
   });
-  console.log(filtered);
   setDisplayedRecipes(filtered);
 };
 
+useEffect(() => {
+  if (searchResult.length > 0) {
+    // Your labels and healthScores logic...
+    setChartData({
+      labels: searchResult.map(recipe => recipe.title),
+      datasets: [
+        {
+          label: 'Spoontacular Score',
+          data: searchResult.map(recipe => recipe.spoonacularScore),
+          backgroundColor: 'rgba(53, 162, 235, 0.5)',
+        },
+      ],
+    });
+  }
+}, [searchResult]);
 
 useEffect(() => {
-    searchRecipy();
-}, []);
-
+  searchRecipy();
+}, [])
 
   return (
     <div className="App">
       <header className="App-header">
-             <h1>Recipe App</h1>
+        <h1>Recipe App</h1>
       </header>
+      <div className="sidebar">
+        <a href="#dashboard" className="nav-link active">Dashboard</a>
+        <a href="#search" className="nav-link">Search</a>
+        <a href="#about" className="nav-link">About</a>
+      </div>
       {medianHealthScore && highestSpoonacularScore && minpricePerServing && maxPricePerServing &&
         <div className="stats-container">
           <div className="stat-card">
@@ -125,7 +174,7 @@ useEffect(() => {
           onChange={(e) => setPriceFilter(e.target.value)}
         />
         <button onClick={handleSearch}>Search</button>
-        <table>
+        <table className='table'>
           <thead>
             <tr>
               <th>Title</th>
@@ -137,15 +186,19 @@ useEffect(() => {
           <tbody>
             {displayedRecipes.map((recipe, index) => (
               <tr key={index}>
-                <td>{recipe.title}</td>
-                <td>{recipe.healthScore}</td>
-                <td>${recipe.pricePerServing}</td>
-                <td>{recipe.spoonacularScore}</td>
+                <td><Link className="Link" state={{ recipe }} to={`/details/${recipe.id}`}>{recipe.title}</Link></td>
+                <td><Link className="Link" state={{ recipe }} to={`/details/${recipe.id}`}>{recipe.healthScore}</Link></td>
+                <td><Link className="Link" state={{ recipe }} to={`/details/${recipe.id}`}>{recipe.pricePerServing}</Link></td>
+                <td><Link className="Link" state={{ recipe }} to={`/details/${recipe.id}`}>{recipe.spoonacularScore}</Link></td>
               </tr>
             ))}
-            
           </tbody>
         </table>
+        <div className="chart-container">
+          {searchResult.length > 0 && (
+            <Bar data={chartData} key={chartData.datasets.length} options={chartOptions} />
+          )}
+        </div>
       </div>
     </div>
   );  

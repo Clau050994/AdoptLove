@@ -1,3 +1,5 @@
+
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -11,10 +13,13 @@ body {
   background-image: url('https://images.unsplash.com/photo-1554034483-04fda0d3507b?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2xlYXIlMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww'); 
   background-size: cover;
   background-repeat: no-repeat;
-  
+
 }
 
-
+.table {
+  background-color: #a7a7a75f;
+  padding: 60px;
+}
 
 .app-container {
   display: flex;
@@ -74,4 +79,80 @@ body {
     width: 100%; /* Full width cards on very small screens */
     margin: 0.5rem 0; /* Adjust margin for stacked layout */
   }
+}
+.sidebar {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  bottom: 0; 
+  width: 150px; 
+  background-color: transparent; 
+  overflow-x: hidden; 
+  overflow-y: auto; 
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); 
+  z-index: 1000; 
+  border-right: 1px solid #1f1cc9;
+}
+
+/* Style for sidebar links */
+.sidebar a {
+  padding: 16px;
+  text-decoration: none;
+  font-size: 18px;
+  color: white;
+  display: block;
+}
+
+.sidebar a:hover {
+  background-color: #575757;
+}
+/* Styles for each navigation link to appear as buttons */
+.nav-link {
+  display: block; /* Make links fill the container */
+  text-align: left; /* Align text to the left */
+  padding: 16px; /* Add some padding inside the buttons */
+  text-decoration: none; /* Remove underline from links */
+  color: white; /* Light text color for contrast */
+  background-color: transparent; /* Slightly lighter bg color than sidebar for buttons */
+  margin: 8px; /* Add some margin to space out buttons */
+  border-radius: 4px; /* Rounded corners for button-like appearance */
+  transition: background-color 0.3s; /* Smooth background color transition on hover */
+}
+
+.nav-link:hover {
+  background-color: #b6b2e2; /* Lighter background on hover */
+}
+
+.nav-link.active {
+  background-color: #666;
+  color: #fff;
+}
+
+/* Responsive styling for smaller screens */
+@media screen and (max-width: 600px) {
+  .sidebar {
+    width: 100px;
+  }
+
+  .nav-link {
+    padding: 10px;
+    margin: 4px;
+    text-align: center;
+  }
+}
+
+.chart-container {
+  height: 400px;
+  width: 100%; 
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin: auto;
+  margin-top: 25px;
+  background-color: rgb(218, 218, 218);
+}
+
+.Link {
+  color: #fff;
+  text-decoration: none;
 }
